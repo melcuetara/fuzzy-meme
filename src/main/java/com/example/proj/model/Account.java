@@ -1,5 +1,7 @@
 package com.example.proj.model;
 
+import org.apache.commons.lang3.builder.EqualsBuilder;
+
 public class Account {
     private String firstName;
     private String lastName;
@@ -8,6 +10,14 @@ public class Account {
     private String password;
     private String userType;
     
+    public Account() {
+
+    }
+    public Account(String firstName, String lastName, int age) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.age = age;
+    }
     public String getFirstName() {
         return firstName;
     }
@@ -45,5 +55,24 @@ public class Account {
         this.userType = userType;
     }
 
-    
+    @Override
+    public boolean equals(Object obj) {
+        if (obj == null) {
+            return false;
+        }
+        if (obj == this) {
+            return true;
+        }
+        if (obj.getClass() != getClass()) {
+            return false;
+        }
+        Account rhs = (Account) obj;
+        return new EqualsBuilder() 
+                .append(this.firstName, rhs.firstName)
+                .append(this.lastName, rhs.lastName)
+                .append(this.age, rhs.age)
+                .append(this.email, rhs.email)
+                .append(this.password, rhs.password)
+                .isEquals();
+    }
 }

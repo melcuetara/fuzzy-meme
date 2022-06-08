@@ -18,15 +18,16 @@ pageEncoding="UTF-8" %>
 
       <s:submit />
     </s:form>
-
     <h3>All User Records:</h3>
 
     <s:iterator value="accounts">
       <fieldset>
         <s:property value="firstName" /><br />
-        <s:property value="lastName" /><br /><s:property value="age" /><br />
+        <s:property value="lastName" /><br />
+        <s:property value="age" /><br />
       </fieldset>
     </s:iterator>
     <p><a href="<s:url action='index' />">Return to home page</a>.</p>
+    
   </body>
 </html>

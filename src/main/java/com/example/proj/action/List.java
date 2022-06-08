@@ -13,6 +13,7 @@ import com.example.proj.model.Account;
 
 public class List extends ActionSupport {
 
+    public String error = "abcd";
     ArrayList<Account> accounts = new ArrayList<Account>();
     public ArrayList<String> listOfFirstNames = new ArrayList<String>();
     public Account selectedAccount = new Account();
@@ -25,6 +26,14 @@ public class List extends ActionSupport {
 
     public void setAccounts(ArrayList<Account> accounts) {
         this.accounts = accounts;
+    }
+
+    public String getError() {
+        return error + "qwerty";
+    }
+
+    public void setError(String error) {
+        this.error = error + "qwerty";
     }
 
     public String getNameInput() {
@@ -48,9 +57,10 @@ public class List extends ActionSupport {
         try {
             String URL = "jdbc:mysql://localhost:3306/sampledb?useTimezone=true&serverTimezone=UTC";
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(URL, "root", "password");
+            connection = DriverManager.getConnection(URL, "root", "meljamaica");
 
         } catch (Exception e) {
+            error = e.getMessage();
         }
         return connection;
     }

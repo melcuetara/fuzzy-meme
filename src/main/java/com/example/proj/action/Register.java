@@ -30,7 +30,7 @@ public class Register extends ActionSupport {
         try {
             String URL = "jdbc:mysql://localhost:3306/sampledb?useTimezone=true&serverTimezone=UTC";
             Class.forName("com.mysql.jdbc.Driver");
-            connection = DriverManager.getConnection(URL, "root", "password");
+            connection = DriverManager.getConnection(URL, "root", "meljamaica");
 
             if (connection != null) {
                 statement = connection.createStatement();
