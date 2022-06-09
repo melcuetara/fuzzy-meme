@@ -28,7 +28,7 @@ public class AccountsRepository {
                 ResultSet rs= preparedStatement.executeQuery();
                 int key = 1;
                 while(rs.next()){  
-                    map.put("" + key, new Account(rs.getString(2), rs.getString(3), rs.getInt(4)));
+                    map.put("" + key, new Account(rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getString(6), rs.getString(7)));
                     key++;
                 }
             } 
@@ -53,7 +53,7 @@ public class AccountsRepository {
 
             if (connection != null) {
                 statement = connection.createStatement();
-                String sql = "INSERT INTO accounts(firstName, lastName, age) VALUES('" +account.getFirstName()+"','"+account.getLastName()+"','"+account.getAge()+"')";
+                String sql = "INSERT INTO accounts(firstName, lastName, age, email, password, userType) VALUES('" +account.getFirstName()+"','"+account.getLastName()+"','"+account.getAge()+"','"+account.getEmail()+"','"+account.getPassword()+"','"+account.getUserType()+"')";
                 statement.executeUpdate(sql);
             } 
         } catch (Exception e) {

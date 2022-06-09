@@ -11,7 +11,7 @@ import com.opensymphony.xwork2.ModelDriven;
 public class AccountsController implements ModelDriven<Object> {
     private static final long serialVersionUID = 1L; 
     private Object model;
-    private Account account = new Account("John", "Doe", 22);
+    private Account account = new Account("John", "Doe", 22, "test@email.com", "123456", "Author");
     private AccountsRepository accountRepository = new AccountsRepository();
     private static Map<String, Account> map;
     {
@@ -23,7 +23,10 @@ public class AccountsController implements ModelDriven<Object> {
     }    
     @Override
     public Object getModel() {
-        return model;
+        if (model != null) {
+            return model;
+        }
+        return account;
     }
     public HttpHeaders create() {
         accountRepository.save(account); 
